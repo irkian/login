@@ -76,13 +76,7 @@ class _LoginPageState extends State<LoginPage>{
 
     }
 
-    void resetPassword() async{
-      
-          // FirebaseUser user = await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
-
-
-    }
-
+    
 
 
 
@@ -191,13 +185,7 @@ class _LoginPageState extends State<LoginPage>{
                       onPressed: moveToRegister,
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: new FlatButton(
-                        child: new Text('Forgot Password',style: new TextStyle(fontSize: 10.0, color: Colors.white)),
-                        onPressed: resetPassword,
-                      ),
-                    ),
+                    
       ];
     }else{
       return [

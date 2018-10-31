@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
 import 'package:login/views/homepage.dart';
+import 'package:login/views/splashScreen.dart';
 
 
 void main()
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget{
 
     return new MaterialApp(
       title: 'Login demo',
-      home: new LoginPage(),
+      home: new splashScreen(),
       theme : new ThemeData(primarySwatch: Colors.blue),
       routes: routes,
 
