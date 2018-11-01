@@ -1,7 +1,10 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:login/temp.dart';
 import 'package:login/views/homepage.dart';
+import 'package:login/reset.dart';
 
 class LoginPage extends StatefulWidget{
   static String tag = "signin";
@@ -78,6 +81,8 @@ class _LoginPageState extends State<LoginPage>{
 
     
 
+    
+
 
 
     
@@ -145,6 +150,7 @@ class _LoginPageState extends State<LoginPage>{
                   
                         validator: (value) => value.isEmpty?'Email cannot be empty' : null,
                         onSaved: (value) => _email = value,
+                        
 
                   ),
                   
@@ -171,7 +177,7 @@ class _LoginPageState extends State<LoginPage>{
 
   List<Widget> buildSubmitButtons(){
     if (_formType == FormType.login){
-      return [
+      return[
         Padding(
           padding: const EdgeInsets.only(top:15.0),
           child: new MaterialButton(color:Colors.white,
@@ -185,22 +191,39 @@ class _LoginPageState extends State<LoginPage>{
                       onPressed: moveToRegister,
                     ),
 
-                    
-      ];
-    }else{
-      return [
-        new MaterialButton(color:Colors.white,
-                    textColor: Colors.deepPurple,
-                    child: new Text("Create an Account"),
-                    onPressed: validateAndSubmit,
-                    splashColor: Colors.deepPurpleAccent, ),
-                    new FlatButton(
-                      child: new Text('Have an account',style: new TextStyle(fontSize: 18.0, color: Colors.white)),
-                      onPressed: moveToLogin,
-                    ),
-      ];
+                     Padding(
+                       padding: const EdgeInsets.only(top: 8.0),
+                       child: new FlatButton(
+                        child: new Text('Forgot Password',style: new TextStyle(fontSize: 12.0, color: Colors.white)),
+                        onPressed: changePassword,
+                                            ),
+                                             ),
+                        
+                                            
+                              ];
+                            }else{
+                              return [
+                                new MaterialButton(color:Colors.white,
+                                            textColor: Colors.deepPurple,
+                                            child: new Text("Create an Account"),
+                                            onPressed: validateAndSubmit,
+                                            splashColor: Colors.deepPurpleAccent, ),
+                                            new FlatButton(
+                                              child: new Text('Have an account',style: new TextStyle(fontSize: 18.0, color: Colors.white)),
+                                              onPressed: moveToLogin,
+                                            ),
+                              ];
+                        
+                            }
+                          }
+                        
+                        
+                           void changePassword() {
+                             print("inside CP");
+                              Navigator.of(context).pushNamed(TempPage.tag);
 
-    }
-  }
 
-}
+                              // Navigator.of(context).pushReplacementNamed(ResetPassword.tag);
+                             
+                          }
+                      }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
+import 'package:login/reset.dart';
+import 'package:login/temp.dart';
 import 'package:login/views/homepage.dart';
 import 'package:login/views/splashScreen.dart';
 
@@ -10,13 +12,12 @@ void main()
 
 class MyApp extends StatelessWidget{
   final routes = <String, WidgetBuilder>{
-
     HomePage.tag:(context) => HomePage(),
-  
     LoginPage.tag:(context) => LoginPage(),
-    
-    
+    TempPage.tag:(context) => TempPage(),
 
+    //ResetPassword.tag:(context) => ResetPassword(),
+  
   };
   @override
   Widget build(BuildContext context){
