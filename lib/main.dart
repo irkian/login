@@ -24,10 +24,9 @@ class MyApp extends StatelessWidget{
 
     return new MaterialApp(
       title: 'Login demo',
-      home: new splashScreen(),
+      home: new SplashScreen(),
       theme : new ThemeData(primarySwatch: Colors.blue),
       routes: routes,
-
 
     );
   }

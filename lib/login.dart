@@ -79,6 +79,19 @@ class _LoginPageState extends State<LoginPage>{
 
     }
 
+    void changePassword() {
+      
+    Navigator.of(context).push(
+    new MaterialPageRoute(
+    builder: (c) {
+    return new ResetPassword();
+    },
+    ),
+    );
+    
+                            
+                          }
+
     
 
     
@@ -218,12 +231,5 @@ class _LoginPageState extends State<LoginPage>{
                           }
                         
                         
-                           void changePassword() {
-                             print("inside CP");
-                              Navigator.of(context).pushNamed(TempPage.tag);
-
-
-                              // Navigator.of(context).pushReplacementNamed(ResetPassword.tag);
-                             
-                          }
+                           
                       }

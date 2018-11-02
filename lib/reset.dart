@@ -10,8 +10,42 @@ class ResetPassword extends StatefulWidget {
 
 class _ResetPasswordState extends State<ResetPassword> {
 
-    final form = new GlobalKey<FormState>();
+    final formK = new GlobalKey<FormState>();
     String mail;
+
+  // resetPass() async {
+  //     print(mail);
+  //     await FirebaseAuth.instance.sendPasswordResetEmail(email:mail).whenComplete((){
+          
+  //       });
+  //      }
+
+  bool validateAndSave(){
+      final form = formK.currentState;
+      if (form.validate()){
+        form.save();
+        return true;
+       
+      }
+      return false;
+    }
+
+       void validateAndSubmit() async{
+      if (validateAndSave()){
+        try {
+          print("mail is : "+mail.toString());
+          await FirebaseAuth.instance.sendPasswordResetEmail(email: mail);
+
+          
+          
+          
+        }
+        catch (e){
+            print ('Error : $e');
+        }
+      }
+
+    }
 
 
   @override
@@ -26,40 +60,45 @@ class _ResetPasswordState extends State<ResetPassword> {
           ),
 
           new Form(
-            key: form ,
-            child: new Container(
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new TextFormField(
-                    style: new TextStyle(color: Colors.white),
-                          decoration: new InputDecoration(
+            key: formK ,
+            child: Padding(
+              padding: const EdgeInsets.all(75.0),
+              child: Center(
+                child: new Container(
+                  child: new Column(
                     
+                    children: <Widget>[
+                      new TextFormField(
+                        style: new TextStyle(color: Colors.white),
+                              decoration: new InputDecoration(
+                        
+                              
+                                
+                              
+                              labelText: "Email",labelStyle: TextStyle(color: Colors.white),
                           
+                              
                             
-                          
-                          labelText: "Email",labelStyle: TextStyle(color: Colors.white),
+                            ),
+                            keyboardType: TextInputType.text,
                       
-                          
-                        
-                        ),
-                         keyboardType: TextInputType.text,
-                  
-                        validator: (value) => value.isEmpty?'Email cannot be empty' : null,
-                        onSaved: (value) => mail = value,
+                            validator: (value) => value.isEmpty?'Email cannot be empty' : null,
+                            onSaved: (value) => mail = value,
 
-                        
-                  ),
+                            
+                      ),
 
-                      new MaterialButton(color:Colors.white,
-                      textColor: Colors.deepPurple,
-                      child: new Text("LOGIN"),
-                      onPressed: resetPass,
-                                            splashColor: Colors.deepPurpleAccent, ),
-                                        
-                                      ],
-                                    ),
-                                  ),
+                          new MaterialButton(color:Colors.white,
+                          textColor: Colors.deepPurple,
+                          child: new Text("Reset"),
+                          onPressed: validateAndSubmit,
+                                                splashColor: Colors.deepPurpleAccent, ),
+                                            
+                                          ],
+                                        ),
+                                      ),
+              ),
+            ),
                                 )
                               ],
                             )
@@ -69,9 +108,5 @@ class _ResetPasswordState extends State<ResetPassword> {
                           );
                         }
                       
-                         resetPass() async {
-                           await FirebaseAuth.instance.sendPasswordResetEmail(email:mail).whenComplete((){
-                                
-                             });
-  }
+                    
 }

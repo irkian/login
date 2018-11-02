@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TempPage extends StatefulWidget {
   static String tag = "fpw";
   @override
-  _TempPageState createState() => _TempPageState();
+  State createState() => _TempPageState();
 }
 
 class _TempPageState extends State<TempPage> {
